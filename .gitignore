@@ -1,0 +1,22 @@
+# Generated
+.svelte-kit
+build
+node_modules
+
+# Env
+.env
+.env.*
+
+# Log files
+*.log*
+*.tsbuildinfo
+logs
+
+# Editor directories and files
+.vscode/*
+
+# Cache
+*cache*
+.DS_Store
+Thumbs.db
+vite.config.ts.timestamp-*

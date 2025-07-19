@@ -1,0 +1,81 @@
+@mixin motion {
+	@media (prefers-reduced-motion: no-preference) {
+		@content;
+	}
+}
+
+@mixin no-motion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}
+
+@mixin hover {
+	@if & {
+		@media (hover: hover) {
+			&:hover {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin active {
+	@if & {
+		@media (hover: hover) {
+			&:active {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin hover-focus {
+	@if & {
+		@include hover {
+			@content;
+		}
+
+		&:focus-visible {
+			@content;
+		}
+	}
+}
+
+@mixin hover-active {
+	@if & {
+		@media (hover: hover) {
+			&:hover,
+			&:active {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin hover-focus-active {
+	@if & {
+		@include hover-active() {
+			@content;
+		}
+
+		&:focus-visible {
+			@content;
+		}
+	}
+}
+
+@mixin disabled {
+	@if & {
+		&:disabled {
+			@content;
+		}
+
+		@media (hover: hover) {
+			&:hover:disabled,
+			&:active:disabled {
+				@content;
+			}
+		}
+	}
+}

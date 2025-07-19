@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["esnext", "DOM", "DOM.Iterable"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "esnext"
+	},
+	"exclude": ["node_modules/**"],
+	"include": [
+		"components/**/*.ts",
+		"components/**/*.svelte",
+		"lib/**/*.ts",
+		"main.d.ts"
+	]
+}

@@ -1,0 +1,4 @@
+.*
+*.config.*
+*.md
+node_modules/

@@ -1,0 +1,40 @@
+@mixin icons-internal($icons) {
+	@if & {
+		@each $icon in $icons {
+			--icon-#{$icon}: url("../../../icons/#{$icon}.svg");
+		}
+	}
+}
+
+@mixin icons($icons, $path: "src/icons") {
+	@if & {
+		@each $icon in $icons {
+			--icon-#{$icon}: url("../../../../../#{$path}/#{$icon}.svg");
+		}
+	}
+}
+
+$icon-size: 1.5rem !default;
+
+@mixin icon($icon, $type: "background", $size: $icon-size) {
+	@if & {
+		$value: var(--icon-#{$icon}) no-repeat center / 100%;
+
+		width: $size;
+		height: $size;
+
+		@if $type == "mask" {
+			mask: $value;
+		} @else {
+			background: $value;
+		}
+	}
+}
+
+@mixin mask-icon($icon, $size: $icon-size) {
+	@if & {
+		background-color: currentColor;
+
+		@include icon($icon, "mask", $size);
+	}
+}
