@@ -4,29 +4,35 @@
 	import type { Image } from "../types";
 
 	let {
-		ampUrl = "",
-		assetsBase = "",
+		ampUrl,
 		children,
-		description = "",
+		class: className,
+		description,
+		faviconsBase = "",
 		fonts = [],
+		fontsBase = "/fonts",
 		ogImage,
 		ogLocale = "ru_RU",
 		ogType = "website",
-		siteName = "",
-		title = "",
-		url = "",
+		siteName,
+		title,
+		url = "/",
+		webAppTitle,
 	}: {
 		ampUrl?: string;
-		assetsBase?: string;
 		children?: Snippet;
+		class?: string;
 		description?: string;
+		faviconsBase?: string;
 		fonts?: string[];
+		fontsBase?: string;
 		ogImage?: Image;
 		ogLocale?: string;
 		ogType?: string;
 		siteName?: string;
 		title?: string;
 		url?: string;
+		webAppTitle?: string;
 	} = $props();
 </script>
 
@@ -37,6 +43,14 @@
 	{#if title}
 		<title>{title}</title>
 		<meta property="og:title" content={title} />
+
+		{#if !webAppTitle}
+			<meta name="apple-mobile-web-app-title" content={title} />
+		{/if}
+	{/if}
+
+	{#if webAppTitle}
+		<meta name="apple-mobile-web-app-title" content={webAppTitle} />
 	{/if}
 
 	{#if description}
@@ -48,33 +62,35 @@
 		<meta property="og:site_name" content={siteName} />
 	{/if}
 
-	{#if url}
-		<link rel="canonical" href={url} />
-		<meta property="og:url" content={url} />
-	{/if}
-
 	{#if ampUrl}
 		<link rel="amphtml" href={ampUrl} />
 	{/if}
 
-	<link rel="manifest" href="{assetsBase}/site.webmanifest" />
-	<link rel="icon" type="image/svg+xml" href="{assetsBase}/favicon.svg" />
-	<link rel="shortcut icon" href="{assetsBase}/favicon.ico" />
+	<link rel="canonical" href={url} />
+	<meta property="og:url" content={url} />
+
+	<link rel="manifest" href="{faviconsBase}/site.webmanifest" />
+	<link rel="icon" type="image/svg+xml" href="{faviconsBase}/favicon.svg" />
+	<link rel="shortcut icon" href="{faviconsBase}/favicon.ico" />
 	<link
 		rel="icon"
 		type="image/png"
-		href="{assetsBase}/favicon-96x96.png"
+		href="{faviconsBase}/favicon-96x96.png"
 		sizes="96x96"
 	/>
 	<link
 		rel="apple-touch-icon"
-		href="{assetsBase}/apple-touch-icon.png"
+		href="{faviconsBase}/apple-touch-icon.png"
 		sizes="180x180"
 	/>
 
+	{#if webAppTitle}
+		<meta name="apple-mobile-web-app-title" content={webAppTitle} />
+	{/if}
+
 	{#each fonts as font (font)}
 		<link
-			href="{assetsBase}/{font}"
+			href="{fontsBase}/{font}"
 			as="font"
 			crossorigin="anonymous"
 			rel="preload"
@@ -84,7 +100,7 @@
 	<meta property="og:locale" content={ogLocale} />
 	<meta property="og:type" content={ogType} />
 	{#if ogImage}
-		<meta property="og:image" content="{assetsBase}/{ogImage.src}" />
+		<meta property="og:image" content={ogImage.src} />
 
 		{#if ogImage.width}
 			<meta property="og:image:width" content={`${ogImage.width}`} />
@@ -98,7 +114,7 @@
 	{/if}
 </svelte:head>
 
-<div>
+<div class={className}>
 	{@render children?.()}
 </div>
 

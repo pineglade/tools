@@ -6,7 +6,8 @@
 				font-style: $style;
 				font-family: $family;
 				font-display: swap;
-				src: url("#{$path-prefix}-#{$style}-#{$weight}.woff2") format("woff2");
+				src: url("/fonts/#{$path-prefix}-#{$style}-#{$weight}.woff2")
+					format("woff2");
 			}
 		}
 	}
