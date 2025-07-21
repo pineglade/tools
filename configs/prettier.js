@@ -7,6 +7,10 @@ export const baseConfig = {
 				parser: "svelte",
 			},
 		},
+		{
+			files: "*.data.html",
+			options: { printWidth: Infinity },
+		},
 	],
 	plugins: ["prettier-plugin-svelte"],
 };

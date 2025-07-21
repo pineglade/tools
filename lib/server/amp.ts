@@ -2,7 +2,7 @@ import type { Handle } from "@sveltejs/kit";
 
 import * as amp from "@sveltejs/amp";
 
-import { minifyInternally } from "./minify";
+import { minifyInternally } from "../minify";
 
 export function resolveAmp(
 	AMP?: boolean | string,
