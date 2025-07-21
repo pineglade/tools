@@ -14,14 +14,12 @@
 	}
 }
 
-$icon-size: 1.5rem !default;
-
-@mixin icon($icon, $type: "background", $size: $icon-size) {
+@mixin icon($icon, $type: "background") {
 	@if & {
 		$value: var(--icon-#{$icon}) no-repeat center / 100%;
 
-		width: $size;
-		height: $size;
+		width: var(--icon-size, 1.5rem);
+		height: var(--icon-size, 1.5rem);
 
 		@if $type == "mask" {
 			mask: $value;
@@ -31,10 +29,10 @@ $icon-size: 1.5rem !default;
 	}
 }
 
-@mixin mask-icon($icon, $size: $icon-size) {
+@mixin mask-icon($icon) {
 	@if & {
 		background-color: currentColor;
 
-		@include icon($icon, "mask", $size);
+		@include icon($icon, "mask");
 	}
 }

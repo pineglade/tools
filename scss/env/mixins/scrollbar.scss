@@ -1,0 +1,32 @@
+@use "interactive" as *;
+
+@mixin scrollbar {
+	@if & {
+		& {
+			--color-ctx-main: var(--color-scrollbar-main, var(--color-main));
+			--color-ctx-back: var(--color-scrollbar-back, var(--color-white));
+
+			overflow: clip auto;
+			scrollbar-color: var(--color-ctx-main) var(--color-ctx-back);
+			scrollbar-width: thin;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		@include motion {
+			scroll-behavior: var(--scroll-behavior);
+		}
+
+		&::-webkit-scrollbar {
+			width: 0.125rem;
+			background-color: var(--color-ctx-back);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--color-ctx-main);
+		}
+
+		&::-webkit-scrollbar-track {
+			background-color: var(--color-ctx-back);
+		}
+	}
+}
