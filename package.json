@@ -1,6 +1,7 @@
 {
 	"author": "efiand",
 	"dependencies": {
+		"@eslint/markdown": "7.0.0",
 		"@fastify/pre-commit": "2.2.0",
 		"@sveltejs/adapter-node": "5.2.13",
 		"@sveltejs/adapter-static": "3.0.8",
@@ -26,7 +27,7 @@
 		"stylelint": "16.22.0",
 		"stylelint-config-standard": "38.0.0",
 		"stylelint-order": "7.0.0",
-		"svelte": "5.36.10",
+		"svelte": "5.36.12",
 		"svelte-check": "4.3.0",
 		"typescript": "5.8.3",
 		"typescript-eslint": "8.37.0",
@@ -50,5 +51,5 @@
 		"upgrade": "node configs/upgrade"
 	},
 	"type": "module",
-	"version": "0.1.1"
+	"version": "0.1.2"
 }

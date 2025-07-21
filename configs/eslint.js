@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import markdown from "@eslint/markdown";
 import prettier from "eslint-config-prettier";
 import perfectionist from "eslint-plugin-perfectionist";
 import svelte from "eslint-plugin-svelte";
@@ -20,6 +21,7 @@ export function createConfig({ rules = {}, svelteConfig = {} } = {}) {
 		prettier,
 		...svelte.configs.prettier,
 		perfectionist.configs["recommended-natural"],
+		...markdown.configs.processor,
 		{
 			languageOptions: {
 				globals: {
