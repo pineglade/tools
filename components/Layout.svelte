@@ -133,6 +133,7 @@
 			flex-grow: 1; // Sticky footer
 			box-sizing: border-box;
 			width: 100%;
+			margin-inline: auto;
 		}
 	}
 
