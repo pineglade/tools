@@ -14,6 +14,8 @@
 		ogImage,
 		ogLocale = "ru_RU",
 		ogType = "website",
+		scroll = true,
+		scrollbar = false,
 		siteName,
 		title,
 		url = "/",
@@ -29,6 +31,8 @@
 		ogImage?: Image;
 		ogLocale?: string;
 		ogType?: string;
+		scroll?: boolean;
+		scrollbar?: boolean;
 		siteName?: string;
 		title?: string;
 		url?: string;
@@ -114,7 +118,7 @@
 	{/if}
 </svelte:head>
 
-<div class={className}>
+<div class={className} class:scroll class:scrollbar>
 	{@render children?.()}
 </div>
 
@@ -123,8 +127,18 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
-		min-height: 100dvh;
-		overflow: hidden scroll;
+		overflow-x: hidden;
+
+		:global(main) {
+			flex-grow: 1; // Sticky footer
+			box-sizing: border-box;
+			width: 100%;
+		}
+	}
+
+	.scroll {
+		height: 100dvh;
+		overflow-y: scroll;
 		scroll-behavior: var(--scroll-behavior);
 
 		@include no-motion {
@@ -132,7 +146,7 @@
 		}
 	}
 
-	:global(main) {
-		flex-grow: 1; // Sticky footer
+	.scrollbar {
+		@include scrollbar;
 	}
 </style>
